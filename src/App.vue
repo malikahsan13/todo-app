@@ -39,6 +39,14 @@
           @delete-task="deleteTask"
         />
       </div>
+
+      <button
+        v-if="tasks.length"
+        @click="clearAll"
+        class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600"
+      >
+        Clear All Tasks
+      </button>
       <p v-else class="text-gray-500 text-center">No tasks yet. Add one!</p>
     </div>
   </div>
