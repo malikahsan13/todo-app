@@ -25,7 +25,7 @@
           :key="task.id"
           :task="task"
           @toggle-task="toggleTask"
-          @toggle-task="deleteTask"
+          @delete-task="deleteTask"
         />
       </div>
       <p v-else class="text-gray-500 text-center">No tasks yet. Add onw!</p>
