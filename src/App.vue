@@ -43,15 +43,14 @@
     </transition-group>
     <p v-else class="text-gray-500 text-center">No tasks yet. Add now!</p>
 
-      <div v-if="tasks.length" class="space-y-2">
-        <TaskItem
-          v-for="task in tasks"
-          :key="task.id"
-          :task="task"
-          @toggle-task="toggleTask"
-          @delete-task="deleteTask"
-        />
-      </div>
+
+    <button class="mt-4 w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600" 
+      v-if="tasks.length"
+      @click="clearAll">
+      Clear All Tasks
+    </button>
+  
+    
       
     </div>
   </div>
@@ -90,7 +89,11 @@ export default {
       tasks.value = tasks.value.filter((t) => t.id !== id)
     }
 
-    return {tasks, newTask, addTask, toggleTask, deleteTask}
+    const clearAll = () => {
+      tasks.value = []
+    }
+
+    return {tasks, newTask, addTask, toggleTask, deleteTask, clearAll}
 
   }
 }
