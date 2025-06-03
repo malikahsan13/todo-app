@@ -6,12 +6,12 @@
             @change="$emit('toggle-task', task.id)"
             class="mr-2"
         />
-        <span :class="{ 'line-through text-gray-500': TextTrackList.completed}">
+        <span :class="{ 'line-through text-gray-500': task.completed}">
             {{ task.title }}
         </span>
     </div>
     <button
-        @click="$emit('delete-task', TextTrackList.id)"
+        @click="$emit('delete-task', task.id)"
         class="text-read-500 hover:text-red-700"
     >Delete</button>
 </template>

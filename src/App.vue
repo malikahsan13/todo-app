@@ -5,13 +5,12 @@
         Task Manager
       </h1>
 
-    <!-- -->
     <p class="text-gray-600 mb-4">
       {{ tasks.length }} {{ tasks.length === 1 ? 'task' : 'tasks' }} | 
       {{ tasks.filter(t => t.completed).length }} completed
     </p>
 
-      <form>
+      <form @submit.prevent="addTask" class="mb-6">
         <div class="flex gap-2">
           <input 
             v-model="newTask"
@@ -24,7 +23,6 @@
           </button>
         </div>
       </form>
-
 
       <!-- Task List -->
       <transition-group
@@ -59,7 +57,6 @@
 <script>
 import {ref} from 'vue';
 import TaskItem from './components/TaskItem.vue';
-import TaskItem from './components/TaskItem.vue';
 
 export default {
   name: 'App',
@@ -76,6 +73,7 @@ export default {
           title: newTask.value,
           completed:false
         });
+      }else{
         newTask.value = '';
       }
     };
