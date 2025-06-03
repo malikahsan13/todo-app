@@ -25,6 +25,24 @@
         </div>
       </form>
 
+
+      <!-- Task List -->
+      <transition-group
+        v-if="tasks.length"
+        name="task"
+        tag="div"
+        class="space-y-2"
+      >
+       <TaskItem
+        v-for="task in tasks"
+        :key="task.id"
+        :task="task"
+        @toggle-task="toggleTask"
+        @delete-task="deleteTask"
+      />
+    </transition-group>
+    <p v-else class="text-gray-500 text-center">No tasks yet. Add now!</p>
+
       <div v-if="tasks.length" class="space-y-2">
         <TaskItem
           v-for="task in tasks"
@@ -34,13 +52,14 @@
           @delete-task="deleteTask"
         />
       </div>
-      <p v-else class="text-gray-500 text-center">No tasks yet. Add onw!</p>
+      
     </div>
   </div>
 </template>
 
 <script>
 import {ref} from 'vue';
+import TaskItem from './components/TaskItem.vue';
 import TaskItem from './components/TaskItem.vue';
 
 export default {
