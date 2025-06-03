@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.task-enter-active,
+.task-leave-active {
+  transition: opacity 0.3s ease;
+}
+.task-enter-from,
+.task-leave-to {
+  opacity: 0;
+}
